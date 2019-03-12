@@ -9,7 +9,7 @@ $ composer require waxwink/report
 ```
 
 ### Instruction
-Here are some examples to use it :
+Here is an examples to use the package :
 
 ```php
 use Illuminate\Support\Collection;
