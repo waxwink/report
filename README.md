@@ -12,33 +12,48 @@ $ composer require waxwink/report
 Here are some examples to use it :
 
 ```php
-require __DIR__."/autoload.php";
-
+use Illuminate\Support\Collection;
 use Waxwink\Report\Excel;
 
+require __DIR__."/vendor/autoload.php";
+
 $keys = [
-    'first_att'=> 'First Title',
-    'second_att'=> 'Second Title',
-    'third_att'=> 'Third Title',
+    'id'=> 'Product ID',
+    'name'=> 'Name',
+    'price'=> 'Price',
 ];
 
-$collection = Model::all();
+$collection = new Collection([
+    [
+        'id'=> '1574',
+        'name'=> 'Phone',
+        'price'=> '100',],
+    [
+        'id'=> '6541',
+        'name'=> 'Printer',
+        'price'=> '150',
+    ],
+    [
+        'id'=> '9652',
+        'name'=> 'Laptop',
+        'price'=> '350',
+    ],
+    [
+        'id'=> '6971',
+        'name'=> 'Mouse',
+        'price'=> '30',
+    ]
+]);
 
-$xl = new Excel($Estate, $keys);
+$xl = new Excel($collection, $keys);
 
-//this would save the file in the root folder
-$xl->export("excel_table");
+//this would save the file in the root folder : table.xlsx
+$xl->export('table');
 
-$xl->setColumnWidth('K', 60)
-    ->setColumnWidth('L', 60)
-    ->wrapTextInColumn('K')
-    ->wrapTextInColumn('L')
-    
-//this would update the file in the root folder 
-$xl->update("excel_table");
+```
 
-//this would send the file to the client to download
-// works only if you're using laravel
+you can also send the file to the client to download. :
+```php
+// (works only if you're using laravel)
 return response()->download($xl->update());
-
 ```
