@@ -1,0 +1,21 @@
+{
+    "name": "waxwink/report",
+    "description": "Producing excel tables out of laravel collections",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohamadreza Pishdad",
+            "email": "mrpishdad@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Waxwink\\Report\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/support": "^5.3",
+        "phpoffice/phpspreadsheet": "^1.6",
+        "ext-bcmath": "*"
+    }
+}
